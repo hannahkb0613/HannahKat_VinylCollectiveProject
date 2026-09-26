@@ -1,0 +1,135 @@
+<!--
+Author: Hannah Bauer
+Course: CGS4183
+Date: 4/16/2026
+Assignment: Project 10 - PHP E-Store
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah Kat's Vinyl Collective - About Us: Our History</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .content-section img {
+      display: block;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .image-container img {
+      max-width: 350px;
+      height: auto;
+    }
+
+    .services-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-weight: bold;
+    }
+
+    .quick-links a {
+      color: #592f6e;
+      text-decoration: none;
+    }
+  </style>
+
+  <script>
+    var isShowing = false;
+    var dropdownMenu = null;
+
+    function show(id) {
+      hide();
+      dropdownMenu = document.getElementById(id);
+      if (dropdownMenu != null) {
+        dropdownMenu.style.visibility = "visible";
+        isShowing = true;
+      }
+    }
+
+    function hide() {
+      if (isShowing && dropdownMenu != null) {
+        dropdownMenu.style.visibility = "hidden";
+      }
+      isShowing = false;
+    }
+  </script>
+</head>
+
+<body>
+<div class="page">
+  <header class="header">
+    <img src="../images/logo.png" alt="Logo" class="logo">
+<nav class="nav">
+  <div class="dropdown">
+    <a href="../index.php">Home</a>
+  </div>
+      <div class="dropdown" onmouseover="show('servicesMenu')" onmouseout="hide()">
+        <a href="services.php">Products & Services</a>
+        <div class="dropdown-content" id="servicesMenu">
+          <a href="services.php">About Our Services</a>
+          <a href="../pages-comingsoon/featured.html">Special Features & Vinyl of the Month</a>
+          <a href="../pages-comingsoon/suppliers.html">Our Vinyl Suppliers</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('estoreMenu')" onmouseout="hide()">
+        <a href="online-orders.html">Online Orders</a>
+        <div class="dropdown-content" id="estoreMenu">
+          <a href="../products-services/catalog.php">E-Store</a>
+          <a href="order-form.html">Order Form</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('aboutMenu')" onmouseout="hide()">
+        <a href="about.html">About Us</a>
+        <div class="dropdown-content" id="aboutMenu">
+          <a href="mission.html">Our Mission</a>
+          <a href="history.html">Our History</a>
+          <a href="../pages-comingsoon/locations.html">Our Locations</a>
+          <a href="../pages-comingsoon/news.html">News & Community Updates</a>
+        </div>
+    </div>
+  </nav>
+</header>
+
+<main class="content-section"> 
+  <h2>About Us | Our History</h2>
+    <p>
+      Our journey has been filled with learning and growth, and we are proud to have established a safe space where music enthusiasts can connect,
+      share stories, and celebrate their love for vinyl. Hannah Kat's Vinyl Collective began as a small dream from our founder Hannah Bauer,
+      originating from a deep love for art and music that blossomed into a carefully curated vinyl supply! What started as a personal collection
+      of vinyl records from all over the world quickly transformed into a desire to share that experience with others. Our dedicated vinyl crew
+      always ensures that each record we offer is in excellent condition and we continually seek out rare finds to keep our collection fresh and
+      exciting. No matter what, our main focus is to continue on providing musical selections that accommodate all musical tastes!
+    </p>
+
+  <div class="services-container">
+    <div class="quick-links">
+      <a href="mission.html">Our Mission</a>
+      <a href="../pages-comingsoon/news.html">News & Community Updates</a>
+    </div>
+    <div class="image-container">
+      <img src="../images/image6.png" alt="Photo">
+    </div>
+  </div>
+</main>
+</div>
+
+  <footer id="footer">
+    <div class="footer2">
+      <a href="contact.html">Contact Us</a>
+      <p>© 2026 Hannah Kat's Vinyl Collective. All rights reserved.</p>
+      <a href="sitemap.html">Site Map</a>
+    </div>
+  </footer>
+</body>
+</html>

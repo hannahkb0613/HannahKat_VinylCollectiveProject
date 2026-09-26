@@ -1,0 +1,102 @@
+<!--
+Author: Hannah Bauer
+Course: CGS4183
+Date: 4/16/2026
+Assignment: Project 10 - PHP E-Store
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah Kat's Vinyl Collective - About</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .content-section h3, h3 a {
+      text-decoration: none;
+      color: #592f6e;
+      font-weight: bold;
+      font-size: 15px;
+      text-align: right;
+    }
+  </style>
+
+  <script>
+    var isShowing = false;
+    var dropdownMenu = null;
+
+    function show(id) {
+      hide();
+      dropdownMenu = document.getElementById(id);
+      if (dropdownMenu != null) {
+        dropdownMenu.style.visibility = "visible";
+        isShowing = true;
+      }
+    }
+
+    function hide() {
+      if (isShowing && dropdownMenu != null) {
+        dropdownMenu.style.visibility = "hidden";
+      }
+      isShowing = false;
+    }
+  </script>
+</head>
+
+<body>
+<div class="page">
+  <header class="header">
+    <img src="../images/logo.png" alt="Logo" class="logo">
+<nav class="nav">
+  <div class="dropdown">
+    <a href="../index.php">Home</a>
+  </div>
+      <div class="dropdown" onmouseover="show('servicesMenu')" onmouseout="hide()">
+        <a href="services.php">Products & Services</a>
+        <div class="dropdown-content" id="servicesMenu">
+          <a href="services.php">About Our Services</a>
+          <a href="../pages-comingsoon/featured.html">Special Features & Vinyl of the Month</a>
+          <a href="../pages-comingsoon/suppliers.html">Our Vinyl Suppliers</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('estoreMenu')" onmouseout="hide()">
+        <a href="online-orders.html">Online Orders</a>
+        <div class="dropdown-content" id="estoreMenu">
+          <a href="../products-services/catalog.php">E-Store</a>
+          <a href="order-form.html">Order Form</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('aboutMenu')" onmouseout="hide()">
+        <a href="about.html">About Us</a>
+        <div class="dropdown-content" id="aboutMenu">
+          <a href="mission.html">Our Mission</a>
+          <a href="history.html">Our History</a>
+          <a href="../pages-comingsoon/locations.html">Our Locations</a>
+          <a href="../pages-comingsoon/news.html">News & Community Updates</a>
+        </div>
+    </div>
+  </nav>
+</header>
+
+<main class="content-section">     
+  <h2>Contact Us</h2>
+    <p>Hannah Kat's Vinyl Collective, having our patrons be satisfied with our quality is our top priority. We would love to know 
+    your all about your experiences with our vinyl products and services.</p>
+    <h3><a href="feedback.html">Feedback</a></h3><br>
+    <h3><a href="../pages-comingsoon/locations.html">Locations</a></h3><br>
+    <h3><a href="links.html">Useful Links - Expanding Your Knowledge on Vinyl</a></h3>
+</main>
+</div>
+
+<footer id="footer">
+  <div class="footer2">
+    <a href="contact.html">Contact Us</a>
+    <p>© 2026 Hannah Kat's Vinyl Collective. All rights reserved.</p>
+    <a href="sitemap.html">Site Map</a>
+  </div>
+</footer>
+</body>
+</html>

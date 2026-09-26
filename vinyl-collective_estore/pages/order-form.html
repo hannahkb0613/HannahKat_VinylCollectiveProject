@@ -1,0 +1,270 @@
+<!--
+Author: Hannah Bauer
+Course: CGS4183
+Date: 4/16/2026
+Assignment: Project 10 - PHP E-Store
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hannah Kat's Vinyl Collective - E-Store Order Form</title>
+  <link rel="stylesheet" href="../style.css">
+<style>
+    .order-section {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+      padding: 25px 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(120, 80, 160, 0.08);
+    }
+
+    .order-section h2 {
+      text-align: center;
+      color: #592f6e;
+      margin-bottom: 12px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .content-section {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    fieldset {
+      border: 2px solid #592f6e;
+      padding: 15px 20px;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #592f6e;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quantity {
+      width: 60px;
+      margin-left: auto;
+    }
+
+    input[type="text"] {
+      width: 40%;
+      padding: 5px 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .fees {
+      font-size: 12px;
+      color: #7a5fb0;
+      margin-left: 5px;
+    }
+
+    .tax {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0 0 0;
+    }
+
+    input[type="submit"], input[type="reset"] {
+      padding: 10px 22px;
+      background-color: #592f6e;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+  </style>
+
+  <script>
+    var isShowing = false;
+    var dropdownMenu = null;
+
+    function show(id) {
+      hide();
+      dropdownMenu = document.getElementById(id);
+      if (dropdownMenu != null) {
+        dropdownMenu.style.visibility = "visible";
+        isShowing = true;
+      }
+    }
+
+    function hide() {
+      if (isShowing && dropdownMenu != null) {
+        dropdownMenu.style.visibility = "hidden";
+      }
+      isShowing = false;
+    }
+  </script>
+</head>
+
+<body>
+<div class="page">
+  <header class="header">
+    <img src="../images/logo.png" alt="Logo" class="logo">
+<nav class="nav">
+  <div class="dropdown">
+    <a href="../index.php">Home</a>
+  </div>
+      <div class="dropdown" onmouseover="show('servicesMenu')" onmouseout="hide()">
+        <a href="services.php">Products & Services</a>
+        <div class="dropdown-content" id="servicesMenu">
+          <a href="services.php">About Our Services</a>
+          <a href="../pages-comingsoon/featured.html">Special Features & Vinyl of the Month</a>
+          <a href="../pages-comingsoon/suppliers.html">Our Vinyl Suppliers</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('estoreMenu')" onmouseout="hide()">
+        <a href="online-orders.html">Online Orders</a>
+        <div class="dropdown-content" id="estoreMenu">
+          <a href="../products-services/catalog.php">E-Store</a>
+          <a href="order-form.html">Order Form</a>
+        </div>
+      </div>
+
+      <div class="dropdown" onmouseover="show('aboutMenu')" onmouseout="hide()">
+        <a href="about.html">About Us</a>
+        <div class="dropdown-content" id="aboutMenu">
+          <a href="mission.html">Our Mission</a>
+          <a href="history.html">Our History</a>
+          <a href="../pages-comingsoon/locations.html">Our Locations</a>
+          <a href="../pages-comingsoon/news.html">News & Community Updates</a>
+        </div>
+    </div>
+  </nav>
+</header>
+
+    <main class="content-section">
+      <div class="order-section">
+        <h2> Vinyl Accessories and Appointments Order Form</h2>
+        <form id="orderForm" method="post" action="../php-files/process_order.php" onsubmit="return orderFormValidate();">
+          <fieldset>
+            <legend>Vinyl Repairs & Appointments (Select 1)</legend>
+            <div class="options">
+              <label><input type="radio" name="repairs" value="Consultation Appointment"> Consultation Appointment ($50)</label>
+              <label><input type="radio" name="repairs" value="Last-Minute Repairs"> Last-Minute Repairs ($75)</label>
+              <label><input type="radio" name="repairs" value="Antique Vinyl Restoration"> Antique Vinyl Restoration ($150)</label>
+              <label><input type="radio" name="repairs" value="Vinyl Resurfacing"> Vinyl Resurfacing ($120)</label>
+              <label><input type="radio" name="repairs" value="Player Player Repair"> Player Player Repair ($200)</label>
+              <label><input type="radio" name="repairs" value="Antique Record Player Repair"> Antique Record Player Repair ($250)</label>
+              <label><input type="radio" name="repairs" value="Not Needed"> Not Needed!</label>
+            </div>
+            <br>
+          </fieldset>
+
+          <fieldset>
+            <legend>Vinyl Care & Accessories (Select Multiple)</legend>
+            <div class="options">
+              <h4>Vinyl Care</h4>
+              <label>
+                <input type="checkbox" name="care[]" value="Cleaning Solution Mix" data-price="10"> Cleaning Solution Mix ($10) 
+                <input type="number" name="quantity[Cleaning Solution Mix]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Microfiber Cloth 2-Pack" data-price="5"> Microfiber Cloth 2-Pack ($5) 
+                <input type="number" name="quantity[Microfiber Cloth 2-Pack]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Stylus Brush" data-price="7"> Stylus Brush ($7) 
+                <input type="number" name="quantity[Stylus Brush]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Scratch Repair Kit" data-price="20"> Scratch Repair Kit ($20) 
+                <input type="number" name="quantity[Scratch Repair Kit]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Vinyl Washer System" data-price="100"> Vinyl Washer System ($100) 
+                <input type="number" name="quantity[Vinyl Washer System]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Anti-Static Vinyl Spray" data-price="15"> Anti-Static Vinyl Spray ($15) 
+                <input type="number" name="quantity[Anti-Static Vinyl Spray]" min="1" value="1" class="quantity"></label>
+            </div>
+
+            <div class="options">
+              <h4>Vinyl Accessories</h4>
+              <label>
+                <input type="checkbox" name="care[]" value="Vinyl Weights" data-price="12"> Vinyl Weights ($12) 
+                <input type="number" name="quantity[Vinyl Weights]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Vinyl Storage" data-price="35"> Vinyl Storage ($35) 
+                <input type="number" name="quantity[Vinyl Storage]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Vinyl Shelving" data-price="100"> Vinyl Shelving ($100) 
+                <input type="number" name="quantity[Vinyl Shelving]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Album Stands" data-price="20"> Album Stands ($20) 
+                <input type="number" name="quantity[Album Stands]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Record Players" data-price="150"> Record Players ($150) 
+                <input type="number" name="quantity[Record Players]" min="1" value="1" class="quantity"></label>
+              <label>
+                <input type="checkbox" name="care[]" value="Polyvinyl Sleeves" data-price="15"> Polyvinyl Sleeves ($15) 
+                <input type="number" name="quantity[Polyvinyl Sleeves]" min="1" value="1" class="quantity"></label>
+            </div>
+            <br>
+          </fieldset>
+
+          <fieldset>
+            <legend>Shipping Options & Payment</legend>
+            <div class="options">
+              <label><input type="radio" name="pickup_online" value="Pickup">Pickup at Store</label>
+              <label><input type="radio" name="pickup_online" value="Delivery">Delivery<span class="fees">  free shipping with $75 purchase</span></label>
+            </div>
+            <br>
+            <div class="tax"> 
+              <input type="checkbox" id="tax_exempt" name="tax_exempt"> 
+              <label for="tax_exempt">I am tax-exempt!<span class="fees">  (state tax applies to order otherwise)</span></label> 
+            </div>
+            <br>
+          </fieldset>
+
+          <div class="buttons">
+            <input type="submit" value="Submit Vinyl Order">
+            <input type="reset" value="Reset Order Form">
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <footer id="footer">
+    <div class="footer2">
+      <a href="contact.html">Contact Us</a>
+      <p>© 2026 Hannah Kat's Vinyl Collective. All rights reserved.</p>
+      <a href="sitemap.html">Site Map</a>
+    </div>
+  </footer>
+</body>
+  <script src="../script/order.js"></script>
+</html>
